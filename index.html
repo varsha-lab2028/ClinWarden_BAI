@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClinWarden</title>
+<style>
+/* Layout: same structure as the reference page — header, stacked white section cards, centred section titles, text + media blocks, persona grid. Colours from the ClinWarden deck. */
+:root{
+  --bg:#f6f2ea; --card:#ffffff; --ink:#1f2b3d; --muted:#5b6677; --line:#e6dfd2;
+  --navy:#2d4a6e; --teal:#17777f; --teal-soft:#e4f2f3; --amber:#a8621f; --amber-soft:#faecd9; --red:#a3392f; --red-soft:#f9e7e4;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101824; --card:#18243a; --ink:#e7ecf3; --muted:#a0abbb; --line:#2a3a52;
+  --navy:#9fbbe0; --teal:#5cc3ca; --teal-soft:#16333c; --amber:#e5a462; --amber-soft:#3a2c1c; --red:#ee8f84; --red-soft:#3a2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101824; --card:#18243a; --ink:#e7ecf3; --muted:#a0abbb; --line:#2a3a52;
+  --navy:#9fbbe0; --teal:#5cc3ca; --teal-soft:#16333c; --amber:#e5a462; --amber-soft:#3a2c1c; --red:#ee8f84; --red-soft:#3a2224; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0;padding:0;background:var(--bg);color:var(--ink);line-height:1.6}
+.container{width:100%;max-width:1200px;margin:auto;padding:20px 16px}
+header{background:var(--card);padding:20px 16px;text-align:center;border-bottom:3px solid var(--teal)}
+header h1{margin:0;font-size:2.5em;color:var(--navy)}
+header p{margin:4px 0 0;color:var(--muted)}
+.section{padding:36px clamp(16px,3vw,32px);margin-bottom:20px;background:var(--card);border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,.08)}
+.section-title{text-align:center;color:var(--teal);font-size:2em;margin:0 0 6px;text-wrap:balance}
+.tagline{text-align:center;font-size:1.2em;font-weight:700;color:var(--navy);margin:0 0 24px;text-wrap:balance}
+.content-block{display:flex;flex-wrap:wrap;align-items:flex-start;gap:32px}
+.content-text{flex:1;min-width:min(300px,100%)}
+.content-text p{margin:0 0 12px}
+.video-container{flex:1;min-width:min(300px,100%);max-width:100%;background:#000;aspect-ratio:16/9;border-radius:8px;overflow:hidden}
+.video-container video{width:100%;height:100%;object-fit:contain;display:block}
+h3{margin:18px 0 8px;font-size:1.05em;color:var(--navy)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{background:var(--teal-soft);margin-bottom:10px;padding:12px 16px;border-left:4px solid var(--teal);border-radius:4px}
+ul.list.amber li{background:var(--amber-soft);border-left-color:var(--amber)}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;padding:0;list-style:none}
+.steps li{padding:6px 10px;border:1.5px solid var(--line);border-radius:6px;font-weight:600;font-size:.95em}
+.steps li.gate{border-color:var(--amber);background:var(--amber-soft);color:var(--amber)}
+.small{font-size:.92em;color:var(--muted)}
+table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.85em;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.hi{color:var(--red);font-weight:700}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.persona-card{background:var(--card);border:1px solid var(--line);padding:12px;border-radius:8px;min-width:0}
+.persona-card img{width:100%;height:auto;border-radius:6px;display:block}
+.persona-card p{margin:8px 0 0;text-align:center;font-size:.92em;color:var(--muted)}
+.journey{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.journey li{padding:10px 12px;border-radius:6px;background:var(--teal-soft)}
+.journey li.win{background:var(--red-soft)}
+@media (max-width:760px){.persona-grid{grid-template-columns:1fr}}
+.tablebox{overflow-x:auto}
+a{color:var(--teal)}
+footer{text-align:center;padding:20px 16px;color:var(--muted);font-size:.9em}
+footer p{margin:4px 0}
+</style>
+
+</head>
+<body>
+<header>
+  <h1>ClinWarden</h1>
+  <p>Every clinical AI needs a warden.</p>
+</header>
+
+<main class="container">
+
+  <section id="overview" class="section">
+    <h2 class="section-title">Company Overview &amp; Agentic AI</h2>
+    <p class="tagline">Agents gather the evidence. Humans make the calls.</p>
+    <div class="content-block">
+      <div class="content-text">
+        <p><b>Mission:</b> make every clinical AI explainable, checked and accountable before it reaches patients.</p>
+        <p><b>Vision:</b> the trust layer for every hospital's AI.</p>
+        <p><b>Market:</b> B2B clinical-AI governance for US hospitals. 71% of US hospitals run predictive AI in the EHR, and 74% split AI oversight across several teams.</p>
+        <p><b>Problem:</b> governance runs on spreadsheets, committees and vendor PDFs. It is manual, slow and inconsistent.</p>
+        <p><b>Role of AI:</b> agents discover, monitor, test and document every model. ClinWarden never diagnoses patients.</p>
+        <ol class="steps">
+          <li>1 Discover</li><li class="gate">2 Map · gate</li><li class="gate">3 Baseline · gate</li><li>4 Monitor</li>
+          <li>5 Investigate</li><li class="gate">6 Control · gate</li><li>7 Document</li><li class="gate">8 Learn · gate</li>
+        </ol>
+        <p class="small">At each gate, a named human approves the risk tier, signs off the baseline, ratifies a pause, or updates policy.</p>
+        <p><b>Value:</b> less manual evidence work, faster safe approvals, failures caught early. ROI = (annual benefit − cost) ÷ cost.</p>
+      </div>
+      <div class="video-container">
+        <video id="video1" controls playsinline preload="metadata" poster="video-poster.jpg">
+          <source src="ClinWarden_Video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section id="moat" class="section">
+    <h2 class="section-title">Moat, Defensibility &amp; Porter's Five Forces</h2>
+    <p class="tagline">Easy to start. Hard to replace.</p>
+    <div class="content-block">
+      <div class="content-text">
+        <h3>Product: one governance layer, two assurance lanes</h3>
+        <ul class="list">
+          <li><b>Predictive lane:</b> drift, subgroup fairness, SHAP/LIME.</li>
+          <li><b>Generative lane:</b> claim-by-claim checks and quarantine.</li>
+          <li><b>Trust Passport:</b> a living evidence record per model, linked in the Governance Evidence Graph. Explanation ≠ validation: SHAP shows why, not whether it's right.</li>
+        </ul>
+        <h3>Competitive moat</h3>
+        <ul class="list amber">
+          <li><b>Deep integrations</b> with the EHR, model endpoints and GenAI apps.</li>
+          <li><b>Passport history:</b> leaving means losing evidence.</li>
+          <li><b>Evidence Graph</b> links models, tests, alerts and decisions.</li>
+          <li>No patient-data moat, since HIPAA and BAA rules limit it.</li>
+        </ul>
+      </div>
+      <div class="content-text">
+        <h3>Porter's Five Forces</h3>
+        <div class="tablebox">
+          <table>
+            <tr><th>Force</th><th>Level</th><th>Implication</th></tr>
+            <tr><td>Buyer power</td><td>High</td><td>Must prove workflow value</td></tr>
+            <tr><td>Supplier power</td><td>Med–High</td><td>Stay vendor-neutral</td></tr>
+            <tr><td>Rivalry</td><td>High</td><td>Rivals each solve one piece</td></tr>
+            <tr><td>Substitutes</td><td>High</td><td>Spreadsheets and committees</td></tr>
+            <tr><td>New entrants</td><td>Moderate</td><td>Dashboards copy; trust doesn't</td></tr>
+          </table>
+        </div>
+        <p style="margin-top:14px"><b>Strategic point:</b> we win by becoming the system of record for clinical-AI governance evidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="personas" class="section">
+    <h2 class="section-title">Persona &amp; Customer Journey</h2>
+    <p class="tagline">Maya has to answer for every model in her hospital.</p>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <img src="maya-chen.jpg" alt="Persona: Dr. Maya Chen, Chief Medical Information Officer">
+        <p><b>Target buyer.</b> Decides on integration, evidence quality, configurable human oversight and security.</p>
+      </div>
+      <div class="persona-card">
+        <img src="arjun-mehta.jpg" alt="Persona: Dr. Arjun Mehta, Hospitalist">
+        <p><b>User.</b> Acts on ClinWarden's alerts at the bedside.</p>
+      </div>
+      <div class="persona-card">
+        <img src="eleanor-brooks.jpg" alt="Persona: Eleanor Brooks, 78, inpatient">
+        <p><b>Affected.</b> The patient whose care the governed models touch.</p>
+      </div>
+      <div class="persona-card">
+        <h3 style="margin-top:4px">Maya's journey</h3>
+        <ol class="journey">
+          <li><b>1 · Onboard:</b> map the AI estate, build baselines</li>
+          <li><b>2 · Pilot:</b> 3 systems get Trust Passports</li>
+          <li><b>3 · Automate:</b> agents monitor around the clock</li>
+          <li class="win"><b>4 · Value proven:</b> an incident is caught and reviewed</li>
+          <li><b>5 · Renew:</b> expand to more models</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="governance" class="section">
+    <h2 class="section-title">Governance, Guardrails &amp; US Compliance</h2>
+    <p class="tagline">Catch it. Pause it. Prove what happened.</p>
+    <div class="content-block">
+      <div class="content-text">
+        <h3>Example: Patient Deterioration Model v4.7 (illustrative)</h3>
+        <ul class="list">
+          <li><b>1 · Detect:</b> drift PSI <span class="hi">0.31</span> (limit 0.20); age 75+ accuracy below minimum.</li>
+          <li><b>2 · Pause:</b> model paused; clinicians switch to the standard protocol.</li>
+          <li><b>3 · Humans decide:</b> restart needs the Model Owner and a Clinical Safety Reviewer.</li>
+          <li><b>4 · Prove:</b> Incident Replay records who saw what, and who acted.</li>
+        </ul>
+        <p class="small" style="margin-top:10px">ClinWarden never overrides a clinician, and its records are evidence, not a legal verdict.</p>
+      </div>
+      <div class="content-text">
+        <h3>Oversight scales with risk</h3>
+        <p>Low: log and review · Moderate: sampling and anomaly alerts · High: continuous monitoring · <b>Critical: human authorisation required</b></p>
+        <h3>Always stops or escalates on</h3>
+        <p>Drift, subgroup drop, unauthorised change, contradicted GenAI claim, missing evidence, privacy event.</p>
+        <h3>Hallucination safeguard</h3>
+        <p>Contradicted GenAI claims are quarantined for pharmacist review. "Supported" is not a guarantee.</p>
+        <h3>US compliance: evidence mapped to</h3>
+        <p><b>NIST AI RMF</b> (voluntary; our workflow follows it) · <b>HIPAA</b> (minimum PHI access, under a BAA) · <b>CCPA/CPRA</b> (applicability check) · <b>FTC</b> (substantiated AI claims) · <b>FCRA</b> (flagged only if it applies)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="appendix" class="section">
+    <h2 class="section-title">Appendix: Thinking &amp; AI Use</h2>
+    <div class="content-block">
+      <div class="content-text">
+        <h3>AI tools used</h3>
+        <p><b>Claude:</b> helped build this website, the video and the slides.<br><b>ChatGPT:</b> helped with research and created the persona images.</p>
+        <p>Transcripts: <a href="https://claude.ai/chat/0970615e-6eab-4c95-b62e-4fe927e0cdd4" target="_blank" rel="noopener">Claude</a> · <a href="https://chatgpt.com/g/g-p-6aa11916cc008191a5e783c998ae35e9-bai/c/6abcff27-6f28-83e8-b503-84421a58a35a" target="_blank" rel="noopener">ChatGPT</a></p>
+        <h3>Hardest call: how autonomous should ClinWarden be?</h3>
+        <ul class="list amber">
+          <li><b>Fully autonomous:</b> fast, but one AI judges another unchecked.</li>
+          <li><b>Approve every step:</b> safe, but it rebuilds the manual bottleneck.</li>
+          <li><b>Chosen, bounded automation:</b> agents monitor and quarantine; named humans own high-risk calls and restarts.</li>
+        </ul>
+      </div>
+      <div class="content-text">
+        <h3>Accepted / Modified / Rejected</h3>
+        <p><b>Accepted:</b> living Trust Passports over one-time certification.<br>
+        <b>Modified:</b> agentic AI, with human gates on high-risk actions.<br>
+        <b>Rejected:</b> SHAP as proof of trust, hence "Explanation ≠ validation".</p>
+        <h3>References</h3>
+        <ol class="small" style="padding-left:18px;margin:0">
+          <li>ONC. (2025). Hospital trends in the use, evaluation, and governance of predictive AI, 2023–2024 (Data Brief No. 80).</li>
+          <li>NIST. (2023). AI Risk Management Framework (AI RMF 1.0), NIST AI 100-1.</li>
+          <li>Lundberg, S. M., &amp; Lee, S.-I. (2017). A unified approach to interpreting model predictions. NeurIPS 30.</li>
+          <li>Ribeiro, M. T., Singh, S., &amp; Guestrin, C. (2016). "Why should I trust you?" KDD '16.</li>
+          <li>Obermeyer, Z., et al. (2019). Dissecting racial bias in an algorithm used to manage the health of populations. Science, 366(6464).</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Made by: Varshamegana Atmakuri (2024604)</p>
+  <p>BAI mid sem assessment · ClinWarden is a fictitious company; all data is illustrative.</p>
+</footer>
+
+<script>
+  // Pause the video when it scrolls out of view
+  const video1 = document.getElementById('video1');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => { if (!e.isIntersecting && !video1.paused) video1.pause(); });
+    }, { threshold: 0.25 }).observe(video1);
+  }
+</script>
+</body>
+</html>
